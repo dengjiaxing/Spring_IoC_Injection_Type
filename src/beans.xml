@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!-- 注册一个UserDaoImpl，实例名称为u -->
+	<bean id="u" class="com.djx.impl.UserDaoImpl"></bean>
+	<!-- 注册一个UserServiceImplement，实例名称为userService -->
+	<bean id="userService" class="com.djx.impl.UserServiceImpl">
+		<!-- 将UserDaoImpl类的实例u注入到UserService实例的userDao属性 -->
+		<property name="userDao">
+			<ref bean="u" />
+		</property>
+	</bean>
+</beans>
